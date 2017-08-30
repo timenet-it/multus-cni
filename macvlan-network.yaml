@@ -1,0 +1,21 @@
+apiVersion: "kubernetes.com/v1"
+kind: Network
+metadata:
+  name: macvlan
+plugin: macvlan
+args: '[
+       {
+            "type": "macvlan",
+            "master": "ens18",
+            "ipam": {
+                "type": "host-local",
+                "subnet": "172.16.0.0/16",
+                "rangeStart": "172.16.202.101",
+                "rangeEnd": "172.16.202.110",
+                "routes": [ { "dst": "0.0.0.0/0", "gw": "172.16.100.1" } ]
+            },
+            "dns": {
+                    "nameservers": [ "8.8.8.8" ]
+            }
+        }
+]'
